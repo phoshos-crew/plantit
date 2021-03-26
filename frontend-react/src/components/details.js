@@ -8,15 +8,20 @@ const Details = () => {
     useEffect(() => {
         cropsService.findCropById(cropId)
             .then(crop => setCrop(crop.data))
-    })
+    }, [cropId])
     return(
         <div>
-            <h1>{crop.attributes.name}</h1>
-            <img src={crop.attributes.main_image_path}/>
-            <h2>Description</h2>
-            <p>
-                {crop.attributes.description}
-            </p>
+            {
+                crop.attributes &&
+                <>
+                    <h1>{crop.attributes.name}</h1>
+                    <img src={crop.attributes.main_image_path}/>
+                    <h2>Description</h2>
+                    <p>
+                        {crop.attributes.description}
+                    </p>
+                </>
+            }
         </div>
     )
 }
