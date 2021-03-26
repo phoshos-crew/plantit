@@ -10,6 +10,8 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 
+
+
 library.add(fab, fas);
 
 
