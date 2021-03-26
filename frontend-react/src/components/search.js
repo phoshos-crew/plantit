@@ -5,9 +5,7 @@ import {Link, useParams, useHistory} from "react-router-dom";
 const Search = () => {
     const {cropName} = useParams()
     const [searchTitle, setSearchTitle] = useState("")
-
     const [results, setResults] = useState([])
-
     const history = useHistory()
     useEffect(() => {
         setSearchTitle(cropName)
@@ -32,7 +30,6 @@ const Search = () => {
             </button>
             <ul className="list-group">
                 {
-
                     results.map(crop =>
                         <li className="list-group-item" key={crop.id}>
                             <Link to={`/details/${crop.id}`}>
