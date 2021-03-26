@@ -3,30 +3,20 @@ import {useParams} from 'react-router-dom'
 import cropsService from '../services/crops-service'
 
 const Details = () => {
-    const [movie, setMovie] = useState({})
-    const {imdbID} = useParams()
+    const [crop, setCrop] = useState({})
+    const {cropId} = useParams()
     useEffect(() => {
-        cropsService.findCropByName(imdbID)
-            .then(movie => setMovie(movie))
+        cropsService.findCropById(cropId)
+            .then(crop => setCrop(crop.data))
     })
     return(
         <div>
-{/*            <h1>{movie.Title}</h1>
-            <img src={movie.Poster}/>
-            <h2>Plot</h2>
+            <h1>{crop.attributes.name}</h1>
+            <img src={crop.attributes.main_image_path}/>
+            <h2>Description</h2>
             <p>
-                {movie.Plot}
+                {crop.attributes.description}
             </p>
-            <h2>Cast</h2>
-            <ul className="list-group">
-                {
-                    movie.Actors && movie.Actors.split(",").map(actor =>
-                        <li className="list-group-item">
-                            {actor}
-                        </li>)
-                }
-            </ul>*/}
-            {JSON.stringify(movie)}
         </div>
     )
 }
