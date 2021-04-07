@@ -1,12 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import cropService from '../services/crops-service'
-import {Link, useParams, useHistory} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
+import ResultGrid from "./grid/grid";
 
 const Search = () => {
+
     const {cropName} = useParams()
     const [searchTitle, setSearchTitle] = useState("")
     const [results, setResults] = useState([])
     const history = useHistory()
+
     useEffect(() => {
         setSearchTitle(cropName)
         if(cropName) {
@@ -16,7 +19,7 @@ const Search = () => {
     }, [cropName])
     return(
         <div>
-            <h1>Search</h1>
+            <h2>Find some plants!</h2>
             <input
                 onChange={(event) => {
                     setSearchTitle(event.target.value)
@@ -28,17 +31,7 @@ const Search = () => {
                 className="btn btn-primary btn-block">
                 Search
             </button>
-            <ul className="list-group">
-                {
-                    results.map(crop =>
-                        <li className="list-group-item" key={crop.id}>
-                            <Link to={`/details/${crop.id}`}>
-                                {crop.attributes.name}
-                            </Link>
-                        </li>
-                    )
-                }
-            </ul>
+            <ResultGrid results={results}/>
         </div>
     )
 }
