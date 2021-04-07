@@ -16,7 +16,7 @@ const Search = () => {
     }, [cropName])
     return(
         <div>
-            <h1>Search</h1>
+            <h2>Find some plants!</h2>
             <input
                 onChange={(event) => {
                     setSearchTitle(event.target.value)
