@@ -19,34 +19,34 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 function App() {
-    return (
-        <Provider store={store}>
-            <div className="container-fluid">
-                <BrowserRouter>
-                    <Route
-                        exact={true}
-                        path={["/"]}>
-                        <Home/>
-                    </Route>
-                    <Route
-                        exact={true}
-                        path={["/search", "/search/:cropName"]}>
-                        <Search/>
-                    </Route>
-                    <Route
-                        exact={true}
-                        path={["/details/:cropId"]}>
-                        <Details/>
-                    </Route>
-                    <Route
-                        exact={true}
-                        path={["/feed"]}>
-                        <FeedPage/>
-                    </Route>
-                </BrowserRouter>
-            </div>
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <div className="container-fluid">
+        <BrowserRouter>
+          <Route
+              exact={true}
+              path={["/"]}>
+            <Home/>
+          </Route>
+          <Route
+              exact={true}
+              path={["/search", "/search/:cropName"]}>
+            <Search/>
+          </Route>
+          <Route
+              exact={true}
+              path={["/details/:cropId"]}>
+            <Details/>
+          </Route>
+          <Route
+              exact={true}
+              path={["/profile", "/profile/userid"]}>
+            <Profile/>
+          </Route>
+        </BrowserRouter>
+      </div>
+    </Provider>
+  );
 }
 
 export default App;
