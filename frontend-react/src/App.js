@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {fas} from '@fortawesome/free-solid-svg-icons'
+
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 
@@ -41,6 +42,11 @@ function App() {
                 exact={true}
                 path={["/register"]}>
                 <RegisterPage/>
+            </Route>
+            <Route
+                exact={true}
+                path={["/feed"]}>
+                <FeedPage/>
             </Route>
         </BrowserRouter>
       </div>

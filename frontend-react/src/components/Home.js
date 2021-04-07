@@ -16,6 +16,8 @@ const Home = () => {
             <br/>
             <Link to="/register">
                 Sign Up
+            <Link to="/feed">
+                Feed
             </Link>
         </div>
     )
