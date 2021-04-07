@@ -19,17 +19,7 @@ const AnonymousContent = () => {
     return(
         <>
             <h1>Anon Content</h1>
-            <ul className="list-group">
-                {
-                    results.map(crop =>
-                        <ResultGrid
-                            name={crop.attributes.name}
-                            key={crop.id}
-                            to={`/details/${crop.id}`}
-                        />
-                    )
-                }
-            </ul>
+            <ResultGrid results={results}/>
         </>
     )
 }
