@@ -7,10 +7,12 @@ const AnonymousContent = () => {
 
     const listOfCrops = ["banana", "potato", "corn", "cucumber", "ice-plant", "coffee-plant", "ghost-plant"]
     const random = Math.floor(Math.random() * listOfCrops.length);
-    const randomCrop = listOfCrops[random];
     const [results, setResults] = useState([])
+    const [randomCrop, setRandomCrop] = useState("")
 
     useEffect(() => {
+        setRandomCrop(listOfCrops[random])
+
         cropService.findCropByName(randomCrop)
             .then(results => setResults(results.data))
     }, [randomCrop])

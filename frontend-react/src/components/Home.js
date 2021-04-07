@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {Link} from "react-router-dom";
 import LoginPage from "./login/login-page";
 import AnonymousContent from "./anonymous-content";
@@ -8,9 +8,6 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 const Home = () => {
 
     const [isLoggedIn, setLoginState] = useState(false)
-
-    // useEffect(() => {
-    // }, [isLoggedIn])
 
     return(
         <Container>
@@ -28,7 +25,7 @@ const Home = () => {
                         Sign Up
                     </Button>
                 </Link>
-                <Link to={`/register`}>
+                <Link to={`/feed`}>
                     Feed
                 </Link>
             </Row>
