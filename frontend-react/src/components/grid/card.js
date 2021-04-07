@@ -6,7 +6,7 @@ import {Col} from "react-bootstrap";
 const ResultCard = ({ name, to }) => {
 
     return (
-        <Col xs={12} sm={6} md={4} lg={3} xl={2}>
+        <Col xs={12} sm={12} md={6} lg={4} xl={4}>
             <div className="card mt-4">
                 <img src="https://www.valuecoders.com/blog/wp-content/uploads/2016/08/react.png"
                      className="card-img-top"
