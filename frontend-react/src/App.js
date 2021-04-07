@@ -13,6 +13,7 @@ import {Provider} from "react-redux";
 import FeedPage from "./components/feed-page";
 
 import LoginPage from "./components/login/login-page";
+import RegisterPage from "./components/register/register-page";
 
 
 library.add(fab, fas);
@@ -52,6 +53,11 @@ function App() {
                 exact={true}
                 path={["/login"]}>
                 <LoginPage/>
+            </Route>
+            <Route
+                exact={true}
+                path={["/register"]}>
+                <RegisterPage/>
             </Route>
         </BrowserRouter>
       </div>

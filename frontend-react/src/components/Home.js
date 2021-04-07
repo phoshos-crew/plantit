@@ -15,6 +15,10 @@ const Home = () => {
             <Link to="/login">
                 Login
             </Link>
+            <br/>
+            <Link to="/register">
+                Sign Up
+            </Link>
         </div>
     )
 }
