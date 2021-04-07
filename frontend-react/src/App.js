@@ -6,10 +6,14 @@ import Home from "./components/Home";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {fas} from '@fortawesome/free-solid-svg-icons'
+
 import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import {Provider} from "react-redux";
 import FeedPage from "./components/feed-page";
+
+import LoginPage from "./components/login/login-page";
+
 
 library.add(fab, fas);
 
@@ -44,6 +48,11 @@ function App() {
               path={["/profile", "/profile/userid"]}>
             <Profile/>
           </Route>
+            <Route
+                exact={true}
+                path={["/login"]}>
+                <LoginPage/>
+            </Route>
         </BrowserRouter>
       </div>
     </Provider>
