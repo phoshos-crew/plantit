@@ -27,6 +27,11 @@ function App() {
               path={["/details/:cropId"]}>
             <Details/>
           </Route>
+          <Route
+              exact={true}
+              path={["/profile", "/profile/userid"]}>
+            <Profile/>
+          </Route>
         </BrowserRouter>
       </div>
   );
