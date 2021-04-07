@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const LoginPage = () => {
-    [username, setUsername] = useState("")
-    [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
     return(
         <div>
             <div className="container">
                 <h1>
                     Login
                 </h1>
+                {/*<FontAwesomeIcon icon="trash"/>*/}
 
                 <div className="mb-3 row">
                     <label
@@ -36,6 +38,8 @@ const LoginPage = () => {
                         <input type="password"
                                className="form-control"
                                id="password"
+                               value={password}
+                               onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 

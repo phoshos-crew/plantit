@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 import {fas} from '@fortawesome/free-solid-svg-icons'
+import LoginPage from "./components/login/login-page";
 
 library.add(fab, fas);
 
@@ -30,6 +31,11 @@ function App() {
               path={["/details/:cropId"]}>
             <Details/>
           </Route>
+            <Route
+                exact={true}
+                path={["/login"]}>
+                <LoginPage/>
+            </Route>
         </BrowserRouter>
       </div>
   );
