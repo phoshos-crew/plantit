@@ -8,6 +8,9 @@ const Home = () => {
             <Link to="/search">
                 Search
             </Link>
+            <Link to="/feed">
+                Feed
+            </Link>
         </div>
     )
 }
