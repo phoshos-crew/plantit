@@ -1,6 +1,7 @@
+import {BrowserRouter, Route} from "react-router-dom";
+
 import Search from "./components/search";
 import Details from "./components/details";
-import {BrowserRouter, Route} from "react-router-dom";
 import Home from "./components/Home";
 
 import {library} from '@fortawesome/fontawesome-svg-core';
@@ -10,10 +11,11 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import {Provider} from "react-redux";
-import FeedPage from "./components/feed-page";
 
+import FeedPage from "./components/feed-page";
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
+import Profile from "./components/profile";
 
 
 
@@ -59,6 +61,11 @@ function App() {
                 exact={true}
                 path={["/register"]}>
                 <RegisterPage/>
+            </Route>
+            <Route
+                exact={true}
+                path={["/feed"]}>
+                <FeedPage/>
             </Route>
         </BrowserRouter>
       </div>
