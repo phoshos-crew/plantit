@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from "react-router-dom";
 import cropService from '../services/crops-service'
+import ResultGrid from "./grid/grid";
 
 // Generate some random veggies.
 const AnonymousContent = () => {
@@ -22,11 +22,11 @@ const AnonymousContent = () => {
             <ul className="list-group">
                 {
                     results.map(crop =>
-                        <li className="list-group-item" key={crop.id}>
-                            <Link to={`/details/${crop.id}`}>
-                                {crop.attributes.name}
-                            </Link>
-                        </li>
+                        <ResultGrid
+                            name={crop.attributes.name}
+                            key={crop.id}
+                            to={`/details/${crop.id}`}
+                        />
                     )
                 }
             </ul>
