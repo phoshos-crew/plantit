@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Plant from "./plant";
-import {Row} from 'react-bootstrap'
+import {Container, Row} from 'react-bootstrap'
 import Update from "./update";
 
 const FeedPage = ({plants, updates}) => {
     return (
-        <div>
+        <Container>
             <h1>Feed</h1>
             {
                 updates.map((update, index) =>
@@ -22,7 +22,7 @@ const FeedPage = ({plants, updates}) => {
                     )
                 }
             </Row>
-        </div>
+        </Container>
     )
 }
 

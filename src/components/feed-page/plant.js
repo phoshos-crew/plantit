@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import cropsService from '../services/crops-service'
+import cropsService from '../../services/crops-service'
 import {Col} from "react-bootstrap";
 
 const Plant = ({cropId}) => {
@@ -13,7 +13,7 @@ const Plant = ({cropId}) => {
             {
                 crop.attributes &&
                 <>
-                    <Col xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <Col>
                         <div className="card mt-4">
                             <img src={crop.attributes.main_image_path}
                                  className="card-img-top"
