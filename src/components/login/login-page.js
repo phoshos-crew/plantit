@@ -76,7 +76,7 @@ const LoginPage = () => {
                 <div className="mb-3 row">
                     <div className="col-sm-2"></div>
                     <div className="col-sm-10">
-                        <a href="../">
+                        <a href="..">
                             Cancel
                         </a>
                     </div>

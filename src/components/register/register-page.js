@@ -95,7 +95,7 @@ const RegisterPage = () => {
                             Login
                         </a>
 
-                        <a href="../" className="float-right">
+                        <a href=".." className="float-right">
                             Cancel
                         </a>
                     </div>
