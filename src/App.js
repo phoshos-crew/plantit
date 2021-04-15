@@ -12,7 +12,7 @@ import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import {Provider} from "react-redux";
 
-import FeedPage from "./components/feed-page";
+import FeedPage from "./components/feed-page/feed-page";
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 import Profile from "./components/profile";
