@@ -1,9 +1,17 @@
 import React, {useState} from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import userActions from "../../actions/user-actions";
+import {connect} from "react-redux";
 
-const LoginPage = () => {
+const LoginPage = (
+    {
+        login,
+        logout,
+        user
+    }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
     return(
         <div>
             <div className="container">
@@ -52,7 +60,9 @@ const LoginPage = () => {
 
                     <div className="d-grid gap-2 mx-auto col-sm-10">
                         <a className="btn btn-primary btn-block"
-                           href="../profile"
+                           onClick={
+                               () => login({username, password})
+                           }
                            role="button">
                             Sign in
                         </a>
@@ -81,9 +91,22 @@ const LoginPage = () => {
                         </a>
                     </div>
                 </div>
+                {JSON.stringify(user)}
             </div>
         </div>
     )
 }
 
-export default LoginPage
+const stpm = (state) => ({
+    user: state.userReducer.currentUser
+})
+
+const dtpm = (dispatch) => {
+    return {
+        login: (credentials) => userActions.login(dispatch, credentials),
+        logout: () => userActions.logout(dispatch)
+    }
+}
+
+
+export default connect(stpm, dtpm)(LoginPage)
