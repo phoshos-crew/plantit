@@ -4,12 +4,22 @@ import Plant from "./plant";
 import {Container, Row} from 'react-bootstrap'
 import Update from "./update";
 import postsActions from "../../actions/posts-actions";
-import {forEach} from "react-bootstrap/ElementChildren";
+import userActions from "../../actions/user-actions";
 
-const FeedPage = ({currentUser, plants, posts, findPostsForUser}) => {
+const FeedPage = (
+    {
+        currentUser,
+        plants,
+        posts,
+        findPostsForUser,
+        getCurrentUser
+    }) => {
     useEffect(() => {
-       currentUser.usersFollowed.forEach(userId => findPostsForUser(userId))
-    },[])
+        getCurrentUser()
+        if(currentUser) {
+            currentUser.usersFollowed.forEach(userId => findPostsForUser(userId))
+        }
+    }, [currentUser])
 
     return (
         <Container>
@@ -40,7 +50,8 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => {
     return {
-        findPostsForUser: (userId) => postsActions.findPostsForUser(dispatch, userId)
+        findPostsForUser: (userId) => postsActions.findPostsForUser(dispatch, userId),
+        getCurrentUser: () => userActions.profile(dispatch)
     }
 }
 

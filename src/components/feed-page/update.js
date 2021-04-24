@@ -1,13 +1,27 @@
 import React from 'react'
-import {Alert} from "react-bootstrap";
+import {Accordion, Alert, Card, Button} from "react-bootstrap";
 
 const Post = ({post}) => {
     return (
-        <Alert variant="info">
-            {/*<Alert.Heading>{text}</Alert.Heading>*/}
-            {JSON.stringify(post)}
-            {/*<h4 className="mb-0">{text}</h4>*/}
-        </Alert>
+        <Accordion>
+            <Alert variant="info">
+                {/*<Alert.Heading>{text}</Alert.Heading>*/}
+                {JSON.stringify(post)}
+                {/*<h4 className="mb-0">{text}</h4>*/}
+            </Alert>
+            <Card>
+                <Card.Header>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                        {`${post.originalPoster.username} uploaded a new picture of a plant!`}
+                    </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="0">
+                    <Card.Img src={post.imageUrl}/>
+                    <Card.Body>{``}</Card.Body>
+                </Accordion.Collapse>
+            </Card>
+
+        </Accordion>
     )
 }
 
@@ -23,7 +37,6 @@ const Post = ({post}) => {
 //             {
 //                 action === "NEW_PICTURE" &&
 //                 <>
-//                     <Update text={`${userName} uploaded a new picture of a plant!`}/>
 //                 </>
 //             }
 //         </>

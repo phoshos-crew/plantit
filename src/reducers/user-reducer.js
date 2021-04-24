@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT} from "../actions/user-actions";
+import {LOGIN, LOGOUT, PROFILE} from "../actions/user-actions";
 
 const initialState = {
     plants: [
@@ -6,23 +6,13 @@ const initialState = {
         {id: "54c7650e6236310003000000"},
         {id: "54bda00e3961370003150400"},
         {id: "544c88bd3432630002000000"}
-    ],
-    updates: [
-        {
-            userName: "Sravni",
-            action: "NEW_PLANT"
-        },
-        {
-            userName: "Sravni",
-            action: "NEW_PICTURE"
-        }
-    ],
-    currentUser: {}
+    ]
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
+        case PROFILE:
             return {
                 ...state,
                 currentUser: action.currentUser
