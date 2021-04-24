@@ -1,20 +1,19 @@
 import React from 'react';
-import ResultCard from "./card";
+import PlantCard from "./card";
 import {Row} from "react-bootstrap";
 
 
-const ResultGrid = (
-    {
-        results
-    }) => {
+const PlantGrid = ({ crops }) => {
     return (
         <Row>
             {
-                results.map((result) =>
-                    <ResultCard
-                        name={result.attributes.name}
-                        key={result.id}
-                        to={`/details/${result.id}`}
+                crops.map(crop =>
+                    <PlantCard
+                        name={crop.attributes.name}
+                        key={crop.id}
+                        details={`/details/${crop.id}`}
+                        img={crop.attributes.main_image_path}
+                        desc={crop.attributes.description}
                     />
                 )
             }
@@ -22,4 +21,4 @@ const ResultGrid = (
     )
 }
 
-export default ResultGrid
+export default PlantGrid
