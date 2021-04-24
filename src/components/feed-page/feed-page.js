@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import Plant from "./plant";
 import {Container, Row} from 'react-bootstrap'
 import Update from "./update";
+import postsActions from "../../actions/posts-actions";
+import {forEach} from "react-bootstrap/ElementChildren";
 
-const FeedPage = ({plants, updates}) => {
+const FeedPage = ({currentUser, plants, posts, findPostsForUser}) => {
+    useEffect(() => {
+       currentUser.usersFollowed.forEach(userId => findPostsForUser(userId))
+    },[])
+
     return (
         <Container>
             <h1>Feed</h1>
             {
-                updates.map((update, index) =>
+                Object.values(posts).flat().map((post, index) =>
                     <Row key={index}>
-                        <Update action={update.action} userName={update.userName}/>
+                        <Update post={post}/>
                     </Row>
                 )
             }
@@ -27,8 +33,15 @@ const FeedPage = ({plants, updates}) => {
 }
 
 const stpm = (state) => ({
+    currentUser: state.userReducer.currentUser,
     plants: state.userReducer.plants,
-    updates: state.userReducer.updates
+    posts: state.postsReducer.posts_by_user
 })
 
-export default connect(stpm)(FeedPage)
+const dtpm = (dispatch) => {
+    return {
+        findPostsForUser: (userId) => postsActions.findPostsForUser(dispatch, userId)
+    }
+}
+
+export default connect(stpm, dtpm)(FeedPage)

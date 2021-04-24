@@ -1,4 +1,4 @@
-const PLANTIT_API_URL = 'http://localhost:4000/api';
+export const PLANTIT_API_URL = 'http://localhost:4000/api';
 
 const login = (credentials) => {
     return fetch(`${PLANTIT_API_URL}/login`,{
