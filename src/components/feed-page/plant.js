@@ -8,27 +8,25 @@ const Plant = ({cropId}) => {
         cropsService.findCropById(cropId)
             .then(crop => setCrop(crop.data))
     }, [])
-    return(
-        <>
-            {
-                crop.attributes &&
-                <>
-                    <Col>
-                        <div className="card mt-4">
-                            <img src={crop.attributes.main_image_path}
-                                 className="card-img-top"
-                                 alt="..."/>
-                            <div className="card-body">
-                                <h5 className="card-title">{crop.attributes.name}</h5>
-                                <p className="card-text">
-                                    {crop.attributes.description}
-                                </p>
-                            </div>
+    return (
+        <Col xs={12} sm={12} md={6} lg={4} xl={4}>
+            <div className="card mt-4">
+                {
+                    crop.attributes &&
+                    <>
+                        <img src={crop.attributes.main_image_path}
+                             className="card-img-top"
+                             alt="..."/>
+                        <div className="card-body">
+                            <h5 className="card-title">{crop.attributes.name}</h5>
+                            <p className="card-text">
+                                {crop.attributes.description}
+                            </p>
                         </div>
-                    </Col>
-                </>
-            }
-        </>
+                    </>
+                }
+            </div>
+        </Col>
     )
 }
 
