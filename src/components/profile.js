@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import cropService from '../services/crops-service'
 import {useParams, useHistory} from "react-router-dom";
-import ResultGrid from "./grid/grid";
+import PlantGrid from "./grid/grid";
 import {Link, Route} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
