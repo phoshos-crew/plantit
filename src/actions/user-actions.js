@@ -2,6 +2,15 @@ import userService from '../services/user-service'
 
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
+export const PROFILE = "PROFILE"
+
+export const profile = (dispatch) => {
+    userService.profile()
+        .then(userInfo => dispatch({
+            type: PROFILE,
+            currentUser: userInfo
+        }))
+}
 
 export const login = (dispatch, credentials) =>
     userService.login(credentials)
@@ -17,7 +26,8 @@ export const logout = (dispatch) =>
 
 const userActions = {
     logout,
-    login
+    login,
+    profile
 }
 
 export default userActions
