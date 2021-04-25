@@ -17,6 +17,7 @@ import FeedPage from "./components/feed-page/feed-page";
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 import Profile from "./components/profile";
+import commentsReducer from "./reducers/comments-reducer";
 
 
 
@@ -24,7 +25,8 @@ library.add(fab, fas);
 
 const reducer = combineReducers({
     userReducer: userReducer,
-    postsReducer: postsReducer
+    postsReducer: postsReducer,
+    commentsReducer: commentsReducer
 })
 
 const store = createStore(reducer,

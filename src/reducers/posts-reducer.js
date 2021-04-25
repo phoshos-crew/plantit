@@ -1,7 +1,7 @@
 import {FIND_POSTS_FOR_USER} from "../actions/posts-actions";
 
 const initialState = {
-    posts_by_user: []
+    posts_by_user: {}
 }
 
 const userReducer = (state = initialState, action) => {
@@ -10,7 +10,8 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts_by_user: {
-                   [action.poster]: action.posts
+                    ...state.posts_by_user,
+                    [action.poster]: action.posts
                 }
             }
         default:

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import Plant from "./plant";
 import {Container, Row} from 'react-bootstrap'
-import Update from "./update";
+import Post from "./post-component";
 import postsActions from "../../actions/posts-actions";
 import userActions from "../../actions/user-actions";
 
@@ -15,9 +15,10 @@ const FeedPage = (
         getCurrentUser
     }) => {
     useEffect(() => {
-        getCurrentUser()
         if(currentUser) {
             currentUser.usersFollowed.forEach(userId => findPostsForUser(userId))
+        } else {
+            getCurrentUser()
         }
     }, [currentUser])
 
@@ -27,7 +28,7 @@ const FeedPage = (
             {
                 Object.values(posts).flat().map((post, index) =>
                     <Row key={index}>
-                        <Update post={post}/>
+                        <Post post={post} currentUser={currentUser}/>
                     </Row>
                 )
             }
