@@ -20,7 +20,7 @@ const TopBar = ({logout, user}) => {
     return(
         <div>
             {/*{console.log("inside", curUser)}*/}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href={curUser ? "/feed" : "/"}>PlantIt</a>
                 {/*{JSON.stringify(curUser)}*/}
                 <form className="form-inline mx-auto">
