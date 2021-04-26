@@ -4,7 +4,6 @@ import {useParams, useHistory} from "react-router-dom";
 import ResultGrid from "./grid/grid";
 
 const Search = () => {
-
     const {cropName} = useParams()
     const [searchTitle, setSearchTitle] = useState("")
     const [results, setResults] = useState([])
@@ -19,18 +18,31 @@ const Search = () => {
     }, [cropName])
     return(
         <div>
-            <h2>Find some plants!</h2>
-            <input
+            <input className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
                 onChange={(event) => {
                     setSearchTitle(event.target.value)
                 }}
-                className="form-control"
                 value={searchTitle}/>
-            <button
-                onClick={() => {history.push(`/search/${searchTitle}`)}}
-                className="btn btn-primary btn-block">
+            <button className="btn btn-primary my-2 my-sm-0"
+                    type="submit"
+                    onClick={() => {history.push(`/search/${searchTitle}`)}}>
                 Search
             </button>
+            {/*<h2>Find some plants!</h2>*/}
+            {/*<input*/}
+            {/*    onChange={(event) => {*/}
+            {/*        setSearchTitle(event.target.value)*/}
+            {/*    }}*/}
+            {/*    className="form-control mr-sm-2"*/}
+            {/*    value={searchTitle}/>*/}
+            {/*<button*/}
+            {/*    onClick={() => {history.push(`/search/${searchTitle}`)}}*/}
+            {/*    className="btn btn-primary my-2 my-sm-0">*/}
+            {/*    Search*/}
+            {/*</button>*/}
             <ResultGrid results={results}/>
         </div>
     )
