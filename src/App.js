@@ -74,7 +74,11 @@ function App() {
                     </Route>
                     <Route
                         exact={true}
-                        path={["/admin"]}>
+                        path={[
+                            "/admin",
+                            "/admin/:contentType",
+                            "/admin/:contentType/:contentId"
+                        ]}>
                         <AdminPage/>
                     </Route>
                 </BrowserRouter>
