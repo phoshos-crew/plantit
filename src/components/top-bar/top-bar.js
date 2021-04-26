@@ -8,7 +8,8 @@ import userService from "../../services/user-service"
 
 const TopBar = ({logout, user}) => {
     const history = useHistory()
-    const [curUser, setCurUser] = useState({})
+    const [curUser, setCurUser] = useState(user)
+    // console.log("outside", user)
 
     useEffect( () => {
         userService.profile()
@@ -18,28 +19,15 @@ const TopBar = ({logout, user}) => {
 
     return(
         <div>
+            {/*{console.log("inside", curUser)}*/}
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href={user ? "/feed" : "/"}>PlantIt</a>
-                {JSON.stringify(curUser)}
+                <a className="navbar-brand" href={curUser ? "/feed" : "/"}>PlantIt</a>
+                {/*{JSON.stringify(curUser)}*/}
                 <form className="form-inline mx-auto">
                     <Search/>
                 </form>
-
                 {
-                    curUser !== {} &&
-                    <Link to={`/`}>
-                        <Button variant={"outline-primary"}
-                                onClick={() => {
-                                    logout()
-                                    // setCurUser({})
-                                    history.push("/")
-                                }}>
-                            Logout
-                        </Button>
-                    </Link>
-                }
-                {
-                    curUser === {} &&
+                    !curUser &&
                     <>
                         <Link to={`/login`}>
                             <Button variant={"outline-primary"} className={"mr-2"}>
@@ -48,11 +36,25 @@ const TopBar = ({logout, user}) => {
                         </Link>
                         <Link to={`/register`}>
                             <Button variant={"outline-dark"}>
-                            Sign Up
+                                Sign Up
                             </Button>
                         </Link>
                     </>
                 }
+                {
+                    curUser &&
+                    <Link to={`/`}>
+                        <Button variant={"outline-primary"}
+                                onClick={() => {
+                                    logout()
+                                    setCurUser({})
+                                    history.push("/")
+                                }}>
+                            Logout
+                        </Button>
+                    </Link>
+                }
+
             </nav>
         </div>
     )

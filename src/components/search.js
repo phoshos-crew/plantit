@@ -25,24 +25,13 @@ const Search = () => {
                 onChange={(event) => {
                     setSearchTitle(event.target.value)
                 }}
-                value={searchTitle}/>
+                // value={searchTitle}
+            />
             <button className="btn btn-primary my-2 my-sm-0"
                     type="submit"
                     onClick={() => {history.push(`/search/${searchTitle}`)}}>
                 Search
             </button>
-            {/*<h2>Find some plants!</h2>*/}
-            {/*<input*/}
-            {/*    onChange={(event) => {*/}
-            {/*        setSearchTitle(event.target.value)*/}
-            {/*    }}*/}
-            {/*    className="form-control mr-sm-2"*/}
-            {/*    value={searchTitle}/>*/}
-            {/*<button*/}
-            {/*    onClick={() => {history.push(`/search/${searchTitle}`)}}*/}
-            {/*    className="btn btn-primary my-2 my-sm-0">*/}
-            {/*    Search*/}
-            {/*</button>*/}
             <ResultGrid results={results}/>
         </div>
     )

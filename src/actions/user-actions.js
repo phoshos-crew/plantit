@@ -20,9 +20,11 @@ export const login = (dispatch, credentials) =>
         }))
 
 export const logout = (dispatch) =>
-    dispatch({
-        type: LOGOUT
-    })
+    userService.logout()
+        .then(response => dispatch({
+            type: LOGOUT
+        }))
+
 
 const userActions = {
     logout,

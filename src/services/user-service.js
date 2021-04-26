@@ -18,12 +18,19 @@ const profile = () => {
         headers: {
             'content-type': 'application/json'
         },
-    }).then(response => response.json())
+    })
+        .catch(error => {})
+        .then(response => response.json())
 }
 
 const logout = () => {
-    return fetch(`${PLANTIT_API_URL}/logout`)
-        .then(response => response.json())
+    return fetch(`${PLANTIT_API_URL}/logout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        },
+    }).then(response => response.text())
 }
 
 const api = {
