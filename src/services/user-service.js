@@ -18,18 +18,45 @@ const profile = () => {
         headers: {
             'content-type': 'application/json'
         },
-    }).then(response => response.json())
+    })
+        .then(response => {
+            if (response.status === 403) {
+                return null
+            } else {
+                return response.json()
+            }
+        })
 }
 
 const logout = () => {
-    return fetch(`${PLANTIT_API_URL}/logout`)
-        .then(response => response.json())
+    return fetch(`${PLANTIT_API_URL}/logout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        },
+    }).then(response => response.text())
+}
+
+const register = (newUser) => {
+    return fetch(`${PLANTIT_API_URL}/register`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(newUser),
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(response => response.json())
+        .catch(error => {
+            alert("Username already exists!")
+        })
 }
 
 const api = {
     login,
     logout,
-    profile
+    profile,
+    register
 }
 
 export default api
