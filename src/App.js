@@ -49,7 +49,7 @@ function App() {
           </Route>
           <Route
               exact={true}
-              path={["/profile", "/profile/userid"]}>
+              path={["/profile", "/profile/:userId"]}>
             <Profile/>
           </Route>
             <Route

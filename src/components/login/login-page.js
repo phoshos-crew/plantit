@@ -3,6 +3,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import userActions from "../../actions/user-actions";
 import {connect} from "react-redux";
 
+import {useHistory} from 'react-router-dom'
+
 const LoginPage = (
     {
         login,
@@ -11,6 +13,11 @@ const LoginPage = (
     }) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+
+/*    const history = useHistory()
+    const login = () => {
+        history.push("/profile")
+    }*/
 
     return(
         <div>
@@ -63,6 +70,7 @@ const LoginPage = (
                            onClick={
                                () => login({username, password})
                            }
+                           /*onClick = {login}*/
                            role="button">
                             Sign in
                         </a>

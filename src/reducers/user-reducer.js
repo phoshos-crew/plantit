@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT} from "../actions/user-actions";
+import {LOGIN, LOGOUT, FIND_USER_BY_ID} from "../actions/user-actions";
 
 const initialState = {
     plants: [
@@ -17,7 +17,8 @@ const initialState = {
             action: "NEW_PICTURE"
         }
     ],
-    currentUser: {}
+    currentUser: {},
+    profileUser: {}
 }
 
 const userReducer = (state = initialState, action) => {
@@ -31,6 +32,11 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentUser: {}
+            }
+        case FIND_USER_BY_ID:
+            return {
+                ...state,
+                profileUser: action.profileUser
             }
         default:
             return state
