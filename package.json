@@ -14,13 +14,15 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "is-svg": "^4.3.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
+    "react-redux": "^7.2.3",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.0.5",
-    "react-redux": "^7.2.3",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
-
+    "history": "^4.10.1",
+    "ra-i18n-polyglot": "^3.14.5"
   }
 }

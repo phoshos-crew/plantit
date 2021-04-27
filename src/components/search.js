@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import cropService from '../services/crops-service'
 import {useParams, useHistory} from "react-router-dom";
-import ResultGrid from "./grid/grid";
+import PlantGrid from "./grid/grid";
 
 const Search = () => {
 
@@ -31,7 +31,7 @@ const Search = () => {
                 className="btn btn-primary btn-block">
                 Search
             </button>
-            <ResultGrid results={results}/>
+            <PlantGrid crops={results}/>
         </div>
     )
 }
