@@ -5,8 +5,14 @@ const findPostsForUser = (userId) => {
         .then(response => response.json())
 }
 
+const findAllPosts = () => {
+    return fetch(`${PLANTIT_API_URL}/posts`)
+        .then(response => response.json())
+}
+
 const api = {
-    findPostsForUser
+    findPostsForUser,
+    findAllPosts
 }
 
 export default api

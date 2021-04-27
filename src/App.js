@@ -11,6 +11,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import postsReducer from "./reducers/posts-reducer";
+import commentsReducer from "./reducers/comments-reducer";
 import {Provider} from "react-redux";
 
 import FeedPage from "./components/feed-page/feed-page";
@@ -19,6 +20,7 @@ import RegisterPage from "./components/register/register-page";
 import Profile from "./components/profile";
 import commentsReducer from "./reducers/comments-reducer";
 import TopBar from "./components/top-bar/top-bar";
+import AdminPage from "./components/admin/admin"
 
 
 
@@ -34,50 +36,59 @@ const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 function App() {
-  return (
-    <Provider store={store}>
-      <div className="container-fluid">
-        <BrowserRouter>
-            <TopBar/>
-          <Route
-              exact={true}
-              path={["/"]}>
-            <Home/>
-          </Route>
-          <Route
-              exact={true}
-              path={["/search", "/search/:cropName"]}>
-            <Search/>
-          </Route>
-          <Route
-              exact={true}
-              path={["/details/:cropId"]}>
-            <Details/>
-          </Route>
-          <Route
-              exact={true}
-              path={["/profile", "/profile/userid"]}>
-            <Profile/>
-          </Route>
-            <Route
-                exact={true}
-                path={["/login"]}>
-                <LoginPage/>
-            </Route>
-            <Route
-                exact={true}
-                path={["/register"]}>
-                <RegisterPage/>
-            </Route>
-            <Route
-                exact={true}
-                path={["/feed"]}>
-                <FeedPage/>
-            </Route>
-        </BrowserRouter>
-      </div>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <div className="container-fluid">
+                <BrowserRouter>
+                    <TopBar/>
+                    <Route
+                        exact={true}
+                        path={["/"]}>
+                        <Home/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/search", "/search/:cropName"]}>
+                        <Search/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/details/:cropId"]}>
+                        <Details/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/profile", "/profile/userid"]}>
+                        <Profile/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/login"]}>
+                        <LoginPage/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/register"]}>
+                        <RegisterPage/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/feed"]}>
+                        <FeedPage/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={[
+                            "/admin",
+                            "/admin/:contentType",
+                            "/admin/:contentType/:contentId"
+                        ]}>
+                        <AdminPage/>
+                    </Route>
+                </BrowserRouter>
+            </div>
+        </Provider>
+    );
 }
 
 export default App;
