@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, FIND_USER_BY_ID} from "../actions/user-actions";
+import {LOGIN, LOGOUT, FIND_USER_BY_ID, PROFILE} from "../actions/user-actions";
 
 const initialState = {
     plants: [
@@ -17,13 +17,12 @@ const initialState = {
             action: "NEW_PICTURE"
         }
     ],
-    currentUser: {},
-    profileUser: {}
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN:
+        case PROFILE:
             return {
                 ...state,
                 currentUser: action.currentUser

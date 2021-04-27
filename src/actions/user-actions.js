@@ -2,7 +2,16 @@ import userService from '../services/user-service'
 
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
+export const PROFILE = "PROFILE"
 export const FIND_USER_BY_ID = "FIND_USER_BY_ID"
+
+export const profile = (dispatch) => {
+    userService.profile()
+        .then(userInfo => dispatch({
+            type: PROFILE,
+            currentUser: userInfo
+        }))
+}
 
 export const login = (dispatch, credentials) =>
     userService.login(credentials)
@@ -23,10 +32,13 @@ export const findUserById = (dispatch, userId) =>
         profileUser: userInfo
     }))
 
+
+
 const userActions = {
     logout,
     login,
-    findUserById
+    findUserById,
+    profile
 }
 
 export default userActions
