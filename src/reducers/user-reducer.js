@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, PROFILE} from "../actions/user-actions";
+import {LOGIN, LOGOUT, PROFILE, REGISTER} from "../actions/user-actions";
 
 const initialState = {
     plants: [
@@ -26,6 +26,11 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentUser: {}
+            }
+        case REGISTER:
+            return {
+                ...state,
+                currentUser: action.currentUser
             }
         default:
             return state

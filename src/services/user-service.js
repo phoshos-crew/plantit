@@ -19,8 +19,13 @@ const profile = () => {
             'content-type': 'application/json'
         },
     })
-        .catch(error => {})
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 403) {
+                return null
+            } else {
+                return response.json()
+            }
+        })
 }
 
 const logout = () => {
@@ -33,10 +38,25 @@ const logout = () => {
     }).then(response => response.text())
 }
 
+const register = (newUser) => {
+    return fetch(`${PLANTIT_API_URL}/register`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(newUser),
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(response => response.json())
+        .catch(error => {
+            alert("Username already exists!")
+        })
+}
+
 const api = {
     login,
     logout,
-    profile
+    profile,
+    register
 }
 
 export default api

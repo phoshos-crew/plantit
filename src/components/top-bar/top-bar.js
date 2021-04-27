@@ -13,9 +13,10 @@ const TopBar = ({logout, user}) => {
 
     useEffect( () => {
         userService.profile()
-            .catch(error => setCurUser({}))
+            // .then(response => console.log("response", response))
+            // .catch(error => setCurUser({}))
             .then(retUser => setCurUser(retUser))
-    }, [])
+    }, [user])
 
     return(
         <div>
@@ -47,7 +48,7 @@ const TopBar = ({logout, user}) => {
                         <Button variant={"outline-primary"}
                                 onClick={() => {
                                     logout()
-                                    setCurUser({})
+                                    setCurUser(null)
                                     history.push("/")
                                 }}>
                             Logout

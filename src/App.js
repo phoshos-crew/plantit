@@ -18,6 +18,7 @@ import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 import Profile from "./components/profile";
 import commentsReducer from "./reducers/comments-reducer";
+import TopBar from "./components/top-bar/top-bar";
 
 
 
@@ -37,6 +38,7 @@ function App() {
     <Provider store={store}>
       <div className="container-fluid">
         <BrowserRouter>
+            <TopBar/>
           <Route
               exact={true}
               path={["/"]}>
