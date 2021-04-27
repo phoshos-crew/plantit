@@ -1,6 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
+import userActions from "../../actions/user-actions";
+import {connect} from "react-redux";
+import {useHistory} from "react-router-dom"
 
-const RegisterPage = () => {
+const RegisterPage = ({register, user}) => {
+    const [newUser, setNewUser] = useState({})
+    const history = useHistory()
+
     return (
         <div>
             <div className="container">
@@ -14,6 +20,7 @@ const RegisterPage = () => {
 
                     <div className="col-sm-10">
                         <input className="form-control"
+                               onChange={(e) => setNewUser({...user, firstName: e.target.value})}
                                id="firstNameInput"
                                placeholder="Sravani"/>
                     </div>
@@ -27,6 +34,7 @@ const RegisterPage = () => {
 
                     <div className="col-sm-10">
                         <input className="form-control"
+                               onChange={(e) => setNewUser({...user, lastName: e.target.value})}
                                id="lastNameInput"
                                placeholder="Kumar"/>
                     </div>
@@ -40,6 +48,7 @@ const RegisterPage = () => {
 
                     <div className="col-sm-10">
                         <input className="form-control"
+                               onChange={(e) => setNewUser({...user, username: e.target.value})}
                                id="usernameInput"
                                placeholder="skumar"/>
                     </div>
@@ -53,6 +62,7 @@ const RegisterPage = () => {
 
                     <div className="col-sm-10">
                         <input type="password"
+                               onChange={(e) => setNewUser({...user, password: e.target.value})}
                                id="passwordInput"
                                className="form-control"
                                placeholder="pass@123!?"/>
@@ -69,6 +79,7 @@ const RegisterPage = () => {
                     <div className="col-sm-10">
                         <input type="password"
                                id="verifyPasswordInput"
+                               onChange={(e) => setNewUser({...user, firstName: e.target.value})}
                                className="form-control"
                                placeholder="pass@123!?"/>
                     </div>
@@ -106,4 +117,12 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage
+const stpm = (state) => ({
+    user: state.userReducer.currentUser
+})
+
+const dtpm = (dispatch) => ({
+    register: (newUser) => userActions.register(newUser)
+})
+
+export default connect(stpm, dtpm)(RegisterPage)
