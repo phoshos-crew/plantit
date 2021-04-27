@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import userActions from "../../actions/user-actions";
 import {connect} from "react-redux";
 import {Link, useHistory} from "react-router-dom"
 import Search from "../search";
-import {Button, Row} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import userService from "../../services/user-service"
 
 const TopBar = ({logout, user}) => {
     const history = useHistory()
     const [curUser, setCurUser] = useState(user)
-    // console.log("outside", user)
+    console.log("outside", user)
 
-    useEffect( () => {
+    useLayoutEffect(() => {
         userService.profile()
             // .then(response => console.log("response", response))
             // .catch(error => setCurUser({}))
@@ -43,6 +43,14 @@ const TopBar = ({logout, user}) => {
                     </>
                 }
                 {
+                    curUser && curUser.role === 'SITE_ADMIN' &&
+                    <Link to={`/admin`}>
+                        <Button variant={"danger"} className={"mr-4"}>
+                            Admin
+                        </Button>
+                    </Link>
+                }
+                {
                     curUser &&
                     <Link to={`/`}>
                         <Button variant={"outline-primary"}
@@ -55,7 +63,6 @@ const TopBar = ({logout, user}) => {
                         </Button>
                     </Link>
                 }
-
             </nav>
         </div>
     )
