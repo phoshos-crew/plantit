@@ -23,7 +23,10 @@ const TopBar = ({logout, user}) => {
             {/*{console.log("inside", curUser)}*/}
             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href={curUser ? "/feed" : "/"}>PlantIt</a>
-                <span className={"mx-3"}>{`Hello ${curUser.firstName}!`}</span>
+                {
+                    curUser &&
+                    <span className={"mx-3"}>{`Hello ${curUser.firstName}!`}</span>
+                }
                 <form className="form-inline mx-auto">
                     <Search/>
                 </form>
