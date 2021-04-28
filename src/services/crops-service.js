@@ -6,6 +6,10 @@ export const findCropById = (cropId) =>
     fetch(`https://openfarm.cc/api/v1/crops/${cropId}/`)
         .then(response => response.json())
 
+export const findAllCropUsers = (cropId) =>
+    fetch(`http://localhost:4000/api/plants/${cropId}`)
+        .then(response => response.json())
+
 export default {
-    findCropByName, findCropById
+    findCropByName, findCropById, findAllCropUsers
 }
