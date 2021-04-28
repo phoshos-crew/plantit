@@ -23,7 +23,7 @@ const TopBar = ({logout, user}) => {
             {/*{console.log("inside", curUser)}*/}
             <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href={curUser ? "/feed" : "/"}>PlantIt</a>
-                {/*{JSON.stringify(curUser)}*/}
+                <span className={"mx-3"}>{`Hello ${curUser.firstName}!`}</span>
                 <form className="form-inline mx-auto">
                     <Search/>
                 </form>
@@ -44,16 +44,23 @@ const TopBar = ({logout, user}) => {
                 }
                 {
                     curUser &&
-                    <Link to={`/`}>
-                        <Button variant={"outline-primary"}
-                                onClick={() => {
-                                    logout()
-                                    setCurUser(null)
-                                    history.push("/")
-                                }}>
-                            Logout
-                        </Button>
-                    </Link>
+                        <div>
+                            <Link to={`/profile`}>
+                                <Button variant={"outline-success"} className={"mr-2"}>
+                                    Profile
+                                </Button>
+                            </Link>
+                            <Link to={`/`}>
+                                <Button variant={"outline-primary"}
+                                        onClick={() => {
+                                            logout()
+                                            setCurUser(null)
+                                            history.push("/")
+                                        }}>
+                                    Logout
+                                </Button>
+                            </Link>
+                        </div>
                 }
 
             </nav>

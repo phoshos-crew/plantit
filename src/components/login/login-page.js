@@ -100,7 +100,7 @@ const LoginPage = (
                         </a>
                     </div>
                 </div>
-                {JSON.stringify(user)}
+                {/*{JSON.stringify(user)}*/}
             </div>
         </div>
     )

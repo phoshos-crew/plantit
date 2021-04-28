@@ -11,7 +11,6 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import postsReducer from "./reducers/posts-reducer";
-import commentsReducer from "./reducers/comments-reducer";
 import {Provider} from "react-redux";
 
 import FeedPage from "./components/feed-page/feed-page";
