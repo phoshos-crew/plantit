@@ -26,7 +26,7 @@ const Details = (
         findAllCropUsers(cropId)
     }, [cropId])
 
-    return(
+    return (
         <div>
             {
                 crop.attributes &&
@@ -45,14 +45,13 @@ const Details = (
                     </ul>
                     {
                         currentUser
-                        && !currentUser.plantsOwned.includes(cropId)
+                        && !Object.values(currentUser.plantsOwned).flat().includes(cropId)
                         && <Button
-                            // onClick={ () => {
-                            //     addPlant(currentUser._id, crop)
-                            //         .catch(error => alert("Plant was not added. Try again."))
-                            //         .then(response => alert("Plant successfully added!"))
-                            // }}
-                            >
+                            onClick={() => {
+                                addPlant(currentUser._id,
+                                    {plantId: cropId})
+                            }}
+                        >
                             Add Plant
                         </Button>
                     }
@@ -65,7 +64,7 @@ const Details = (
                                     <>
                                         <Card style={{width: '18rem'}}>
                                             <Card.Body>
-                                                <Card.Title>user.username</Card.Title>
+                                                <Card.Title>{user.username}</Card.Title>
                                                 <Link to={`/profile/${user._id}`}>
                                                     <Button variant="primary">Go</Button>
                                                 </Link>
@@ -80,7 +79,7 @@ const Details = (
                     {
                         !cropUsers &&
                         <h5>
-                           No one yet!
+                            No one yet!
                         </h5>
                     }
                 </>

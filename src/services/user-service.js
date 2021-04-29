@@ -61,7 +61,7 @@ const findUserById = (userId) => {
 
 const addPlant = (userId, plant) => {
     return fetch(`${PLANTIT_API_URL}/plants/${userId}`, {
-        method: "POST",
+        method: "PUT",
         credentials: "include",
         body: JSON.stringify(plant),
         headers: {
