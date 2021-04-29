@@ -17,8 +17,7 @@ const initialState = {
             userName: "Sravni",
             action: "NEW_PICTURE"
         }
-    ],
-    currentUser: {}
+    ]
 }
 
 const userReducer = (state = initialState, action) => {
@@ -34,7 +33,6 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 currentUser: {}
             }
-
         case FIND_USER_BY_ID:
             return {
                 ...state,
