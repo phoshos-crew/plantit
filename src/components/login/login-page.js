@@ -4,8 +4,6 @@ import userActions from "../../actions/user-actions";
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom"
 
-import {useHistory} from 'react-router-dom'
-
 const LoginPage = (
     {
         login,
