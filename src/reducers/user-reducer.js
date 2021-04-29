@@ -39,7 +39,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profileUser: action.profileUser
-
+            }
         case REGISTER:
             return {
                 ...state,
