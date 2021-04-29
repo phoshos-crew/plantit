@@ -7,6 +7,7 @@ const initialState = {
         {id: "54c7650e6236310003000000"},
         {id: "54bda00e3961370003150400"},
         {id: "544c88bd3432630002000000"}
+
     ],
     updates: [
         {
@@ -31,7 +32,7 @@ const userReducer = (state = initialState, action) => {
         case LOGOUT:
             return {
                 ...state,
-                currentUser: {}
+                currentUser: null
             }
         case FIND_USER_BY_ID:
             return {

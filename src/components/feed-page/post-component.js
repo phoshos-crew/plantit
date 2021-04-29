@@ -23,7 +23,9 @@ const Post = (
             <Card>
                 <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        {`${post.originalPoster.username} uploaded a new picture of a plant!`}
+                        {`${post.originalPoster.username} uploaded a new picture of a plant on ${
+                            (new Date(post.createdAt)).toDateString()
+                        }`}
                     </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
@@ -35,7 +37,7 @@ const Post = (
                                     commentsByPost
                                     && commentsByPost[post._id]
                                     && commentsByPost[post._id].map(comment =>
-                                        <Comment comment={comment}/>
+                                        <Comment key={comment._id} comment={comment}/>
                                     )
                                 }
                                 <h1>Leave a comment:</h1>
@@ -45,7 +47,7 @@ const Post = (
                                 <Button onClick={
                                     () => {
                                         createComment(post._id, {
-                                            commentBody: commentBody,
+                                            body: commentBody,
                                             originalPoster: currentUser._id})
                                         setCommentBody("")
                                     }}>Submit</Button>
