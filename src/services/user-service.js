@@ -46,16 +46,24 @@ const register = (newUser) => {
         headers: {
             'content-type': "application/json"
         }
-    }).then(response => response.json())
-        .catch(error => {
-            alert("Username already exists!")
-        })
+    })
+        // .then(promise => console.log(promise))
+        .then(response => response.json())
+        // .catch(error => {
+        //     alert("Username already exists!")
+        // })
+}
+
+const findUserById = (userId) => {
+    return fetch(`${PLANTIT_API_URL}/users/${userId}`)
+    .then(response => response.json())
 }
 
 const api = {
     login,
     logout,
     profile,
+    findUserById,
     register
 }
 

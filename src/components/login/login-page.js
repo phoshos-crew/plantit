@@ -14,6 +14,11 @@ const LoginPage = (
     const [credentials, setCredentials] = useState({})
     const history = useHistory()
 
+/*    const history = useHistory()
+    const login = () => {
+        history.push("/profile")
+    }*/
+
     return(
         <div>
             <div className="container">
@@ -72,6 +77,7 @@ const LoginPage = (
                                        }
                                    })
                            }
+                           /*onClick = {login}*/
                            role="button">
                             Sign in
                         </a>
@@ -100,7 +106,7 @@ const LoginPage = (
                         </a>
                     </div>
                 </div>
-                {JSON.stringify(user)}
+                {/*{JSON.stringify(user)}*/}
             </div>
         </div>
     )

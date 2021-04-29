@@ -16,7 +16,6 @@ const Admin = () => {
         if (contentType === 'posts') {
             postsService.findAllPosts().then((posts) => {
                 setContent(posts)
-                // console.log("posts: " + JSON.stringify(posts))
             })
         }
     }, [contentType])
@@ -34,7 +33,6 @@ const Admin = () => {
                 </Row>
             </Container>
         </>
-
     )
 }
 
