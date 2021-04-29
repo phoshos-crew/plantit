@@ -5,6 +5,7 @@ export const LOGOUT = "LOGOUT"
 export const PROFILE = "PROFILE"
 export const FIND_USER_BY_ID = "FIND_USER_BY_ID"
 export const REGISTER = "REGISTER"
+export const ADD_PLANT = "ADD_PLANT"
 
 
 export const profile = (dispatch) => {
@@ -42,6 +43,13 @@ export const findUserById = (dispatch, userId) =>
         profileUser: userInfo
     }))
 
+export const addPlant = (dispatch, userId, plantId) => {
+    userService.addPlant(userId, plantId)
+        .then(user => dispatch({
+            type: ADD_PLANT,
+            currentUser: user
+        }))
+}
 
 
 const userActions = {
@@ -49,7 +57,8 @@ const userActions = {
     login,
     findUserById,
     profile,
-    register
+    register,
+    addPlant
 }
 
 export default userActions

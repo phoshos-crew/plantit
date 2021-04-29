@@ -1,4 +1,4 @@
-import {LOGIN, LOGOUT, FIND_USER_BY_ID, PROFILE, REGISTER} from "../actions/user-actions";
+import {LOGIN, LOGOUT, FIND_USER_BY_ID, PROFILE, REGISTER, ADD_PLANT} from "../actions/user-actions";
 
 
 const initialState = {
@@ -11,11 +11,11 @@ const initialState = {
     ],
     updates: [
         {
-            userName: "Sravni",
+            userName: "Sravani",
             action: "NEW_PLANT"
         },
         {
-            userName: "Sravni",
+            userName: "Sravani",
             action: "NEW_PICTURE"
         }
     ]
@@ -44,6 +44,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 currentUser: action.currentUser
 
+            }
+        case ADD_PLANT:
+            return {
+                ...state,
+                currentUser: action.currentUser
             }
         default:
             return state
