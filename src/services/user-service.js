@@ -59,12 +59,25 @@ const findUserById = (userId) => {
     .then(response => response.json())
 }
 
+const addPlant = (userId, plant) => {
+    return fetch(`${PLANTIT_API_URL}/plants/${userId}`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(plant),
+        headers: {
+            'content-type': "application/json"
+        }
+    })
+        .then(response => response.json())
+}
+
 const api = {
     login,
     logout,
     profile,
     findUserById,
-    register
+    register,
+    addPlant
 }
 
 export default api

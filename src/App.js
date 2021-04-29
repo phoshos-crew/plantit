@@ -11,6 +11,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {combineReducers, createStore} from "redux";
 import userReducer from "./reducers/user-reducer";
 import postsReducer from "./reducers/posts-reducer";
+import cropReducer from "./reducers/crop-reducer";
 import {Provider} from "react-redux";
 
 import FeedPage from "./components/feed-page/feed-page";
@@ -29,7 +30,8 @@ library.add(fab, fas);
 const reducer = combineReducers({
     userReducer: userReducer,
     postsReducer: postsReducer,
-    commentsReducer: commentsReducer
+    commentsReducer: commentsReducer,
+    cropReducer: cropReducer
 })
 
 const store = createStore(reducer,
