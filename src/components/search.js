@@ -18,20 +18,26 @@ const Search = () => {
     }, [cropName])
     return(
         <div>
-            <input className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                onChange={(event) => {
-                    setSearchTitle(event.target.value)
-                }}
-                // value={searchTitle}
-            />
-            <button className="btn btn-primary my-2 my-sm-0"
+            {
+                !cropName &&
+                <div>
+                    <input className="form-control mr-sm-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        onChange={(event) => {
+                            setSearchTitle(event.target.value)
+                        }}
+                    // value={searchTitle}
+                    />
+                    <button className="btn btn-primary my-2 my-sm-0"
                     type="submit"
                     onClick={() => {history.push(`/search/${searchTitle}`)}}>
-                Search
-            </button>
+                    Search
+                    </button>
+                </div>
+            }
+
             <PlantGrid crops={results}/>
         </div>
     )
