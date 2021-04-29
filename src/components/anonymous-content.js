@@ -21,7 +21,7 @@ const AnonymousContent = () => {
 
     return(
         <>
-            <h1>Anon Content</h1>
+            <h3>Anon Content</h3>
             <PlantGrid crops={crops}/>
         </>
     )
