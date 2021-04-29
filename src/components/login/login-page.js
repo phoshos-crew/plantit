@@ -4,6 +4,8 @@ import userActions from "../../actions/user-actions";
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom"
 
+import {useHistory} from 'react-router-dom'
+
 const LoginPage = (
     {
         login,
@@ -13,6 +15,11 @@ const LoginPage = (
 
     const [credentials, setCredentials] = useState({})
     const history = useHistory()
+
+/*    const history = useHistory()
+    const login = () => {
+        history.push("/profile")
+    }*/
 
     return(
         <div>
@@ -72,6 +79,7 @@ const LoginPage = (
                                        }
                                    })
                            }
+                           /*onClick = {login}*/
                            role="button">
                             Sign in
                         </a>
