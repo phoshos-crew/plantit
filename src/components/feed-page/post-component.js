@@ -35,7 +35,7 @@ const Post = (
                                     commentsByPost
                                     && commentsByPost[post._id]
                                     && commentsByPost[post._id].map(comment =>
-                                        <Comment comment={comment}/>
+                                        <Comment key={comment._id} comment={comment}/>
                                     )
                                 }
                                 <h1>Leave a comment:</h1>

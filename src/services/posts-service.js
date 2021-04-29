@@ -10,9 +10,20 @@ const findAllPosts = () => {
         .then(response => response.json())
 }
 
+const createPost = (post) => {
+    return fetch(`${PLANTIT_API_URL}/posts`,{
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(post)
+    }).then(response => response.json())
+}
+
 const api = {
     findPostsForUser,
-    findAllPosts
+    findAllPosts,
+    createPost
 }
 
 export default api
