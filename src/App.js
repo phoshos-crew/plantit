@@ -17,6 +17,7 @@ import FeedPage from "./components/feed-page/feed-page";
 import LoginPage from "./components/login/login-page";
 import RegisterPage from "./components/register/register-page";
 import Profile from "./components/profile";
+import ProfileAnon from "./components/profile-anon";
 import commentsReducer from "./reducers/comments-reducer";
 import TopBar from "./components/top-bar/top-bar";
 import AdminPage from "./components/admin/admin"
@@ -57,8 +58,13 @@ function App() {
                     </Route>
                     <Route
                         exact={true}
-                        path={["/profile", "/profile/userid"]}>
+                        path={["/profile"]}>
                         <Profile/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/profile/:userId"]}>
+                        <ProfileAnon/>
                     </Route>
                     <Route
                         exact={true}
