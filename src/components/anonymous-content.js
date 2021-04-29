@@ -12,10 +12,13 @@ const AnonymousContent = () => {
 
     useLayoutEffect(() => {
         setRandomCrop(listOfCrops[random])
+    }, [])
 
+    useEffect(() => {
         cropService.findCropByName(randomCrop)
             .then(results => setCrops(results.data))
     }, [randomCrop])
+
     return(
         <>
             <h1>Anon Content</h1>
