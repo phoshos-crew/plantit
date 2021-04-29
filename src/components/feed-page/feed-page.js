@@ -42,9 +42,19 @@ const FeedPage = (
                 })
                 setImgUrl("")
             }}>Submit</Button>
-            <h2>Friends Posts</h2>
+            <h2>Friends Recent Posts</h2>
             {
-                Object.values(posts).flat().map((post, index) =>
+                Object.values(posts).flat().sort(
+                    (a,b) => (a.createdAt > b.createdAt ? 1 : -1)
+                ).filter((post) => {
+                    const date = new Date(post.createdAt)
+                    const now = new Date(Date.now())
+                    const yesterday = now.setDate(now.getDate() - 1)
+                    if(date > yesterday) {
+                        return post
+                    }
+                })
+                    .map((post, index) =>
                     currentUser.usersFollowed.includes(post.originalPoster._id) &&
                     <Row key={post._id}>
                         <Post post={post} currentUser={currentUser}/>
@@ -53,11 +63,12 @@ const FeedPage = (
             }
             <h2>My posts</h2>
             {
-                Object.values(posts).flat().map((post, index) =>
-                    currentUser._id === post.originalPoster._id &&
-                    <Row key={post._id}>
-                        <Post post={post} currentUser={currentUser}/>
-                    </Row>
+                Object.values(posts).flat().map((post, index) => {
+                        return currentUser._id === post.originalPoster._id &&
+                        <Row key={post._id}>
+                            <Post post={post} currentUser={currentUser}/>
+                        </Row>
+                }
                 )
             }
             <Row>

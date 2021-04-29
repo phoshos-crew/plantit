@@ -10,8 +10,8 @@ const Comment = (
     const [editingComment, setEditingComment] = useState(comment)
     return (
         <>
-            <h1>{comment.originalPoster.username}</h1>
-            <p>{comment.commentBody}</p>
+            <h3>{`${comment.originalPoster.username} on ${(new Date(comment.createdAt)).toDateString()}`}</h3>
+            <p>{comment.body}</p>
         </>)
 }
 
