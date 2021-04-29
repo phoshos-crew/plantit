@@ -12,13 +12,6 @@ const Table = ({ contents, contentType }) => {
                     <th className="d-none d-md-table-cell">_id</th>
                     <th className="d-none d-md-table-cell">Poster</th>
                     <th className="d-none d-lg-table-cell">Type</th>
-
-                    <th className="text-right">
-                        <FontAwesomeIcon icon={"sort-alpha-up"} order={2} size={"lg"} className="mr-3"/>
-                        <Link to={"/something"}>
-                            <FontAwesomeIcon icon={"th"} order={3} size={"lg"} className="mr-1"/>
-                        </Link>
-                    </th>
                 </tr>
                 </thead>
                 <tbody>
