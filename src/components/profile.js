@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -9,7 +9,12 @@ const Profile = (
     {
         currentUser,
         getCurrentUser,
+        profileUser,
+        getUserById
     }) => {
+
+
+    const [newUser, setNewUser] = useState()
 
     useEffect(() => {
         getCurrentUser()
@@ -100,6 +105,24 @@ const Profile = (
                             </Card.Body>
                         </Card>
                     </div>
+
+                    <div className="col-4">
+                        <h4>Users {currentUser.firstName} Follows</h4>
+
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[0]}`}>
+                            {currentUser.usersFollowed[0]}</Link></h6>
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[1]}`}>
+                            {currentUser.usersFollowed[1]}</Link></h6>
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[2]}`}>
+                            {currentUser.usersFollowed[2]}</Link></h6>
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[3]}`}>
+                            {currentUser.usersFollowed[3]}</Link></h6>
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[4]}`}>
+                            {currentUser.usersFollowed[4]}</Link></h6>
+                            <h6><Link to = {`/profile/${currentUser.usersFollowed[5]}`}>
+                            {currentUser.usersFollowed[5]}</Link></h6>
+
+                    </div>
                 </>
             }
         </div>
@@ -110,12 +133,14 @@ const Profile = (
 const stpm = (state) => (
     {
         currentUser: state.userReducer.currentUser,
+        profileUser: state.userReducer.profileUser,
     }
 )
 
 const dtpm = (dispatch) => {
     return {
-        getCurrentUser: () => userActions.profile(dispatch)
+        getCurrentUser: () => userActions.profile(dispatch),
+        getUserById: (userId) => userActions.findUserById(dispatch, userId)
     }
 }
 
