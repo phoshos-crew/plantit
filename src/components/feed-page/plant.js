@@ -1,13 +1,22 @@
 import React, {useState, useEffect} from 'react'
 import cropsService from '../../services/crops-service'
-import {Col} from "react-bootstrap";
+import {Col, Button} from "react-bootstrap";
+import userActions from "../../actions/user-actions";
+import {connect} from 'react-redux'
 
-const Plant = ({cropId}) => {
+const Plant = (
+    {
+        currentUser,
+        getCurrentUser,
+        cropId
+    }) => {
     const [crop, setCrop] = useState({attributes: false})
     useEffect(() => {
         cropsService.findCropById(cropId)
             .then(crop => setCrop(crop.data))
+        getCurrentUser()
     }, [])
+
     return (
         <Col xs={12} sm={12} md={6} lg={4} xl={4}>
             <div className="card mt-4">
@@ -23,6 +32,11 @@ const Plant = ({cropId}) => {
                                 {crop.attributes.description}
                             </p>
                         </div>
+                        {
+                            currentUser
+                            && !currentUser.plantsOwned.includes(cropId)
+                            && <Button>Add Plant</Button>
+                        }
                     </>
                 }
             </div>
@@ -30,4 +44,14 @@ const Plant = ({cropId}) => {
     )
 }
 
-export default Plant
+const stpm = (state) => ({
+    currentUser: state.userReducer.currentUser
+})
+
+const dtpm = (dispatch) => {
+    return {
+        getCurrentUser: () => userActions.profile(dispatch)
+    }
+}
+
+export default connect(stpm, dtpm)(Plant)
