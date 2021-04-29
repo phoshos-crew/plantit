@@ -1,17 +1,34 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import Plant from "./plant";
 import {Container, Row} from 'react-bootstrap'
-import Update from "./update";
+import Post from "./post-component";
+import postsActions from "../../actions/posts-actions";
+import userActions from "../../actions/user-actions";
 
-const FeedPage = ({plants, updates}) => {
+const FeedPage = (
+    {
+        currentUser,
+        plants,
+        posts,
+        findPostsForUser,
+        getCurrentUser
+    }) => {
+    useEffect(() => {
+        if(currentUser) {
+            currentUser.usersFollowed.forEach(userId => findPostsForUser(userId))
+        } else {
+            getCurrentUser()
+        }
+    }, [currentUser])
+
     return (
         <Container>
             <h1>Feed</h1>
             {
-                updates.map((update, index) =>
+                Object.values(posts).flat().map((post, index) =>
                     <Row key={index}>
-                        <Update action={update.action} userName={update.userName}/>
+                        <Post post={post} currentUser={currentUser}/>
                     </Row>
                 )
             }
@@ -27,8 +44,16 @@ const FeedPage = ({plants, updates}) => {
 }
 
 const stpm = (state) => ({
+    currentUser: state.userReducer.currentUser,
     plants: state.userReducer.plants,
-    updates: state.userReducer.updates
+    posts: state.postsReducer.posts_by_user
 })
 
-export default connect(stpm)(FeedPage)
+const dtpm = (dispatch) => {
+    return {
+        findPostsForUser: (userId) => postsActions.findPostsForUser(dispatch, userId),
+        getCurrentUser: () => userActions.profile(dispatch)
+    }
+}
+
+export default connect(stpm, dtpm)(FeedPage)

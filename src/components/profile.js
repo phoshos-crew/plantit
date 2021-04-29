@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useParams, useHistory} from "react-router-dom";
+import PlantGrid from "./grid/grid";
 import {Link, Route} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";

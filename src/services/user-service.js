@@ -1,4 +1,4 @@
-const PLANTIT_API_URL = 'http://localhost:4000/api';
+export const PLANTIT_API_URL = 'http://localhost:4000/api';
 
 const login = (credentials) => {
     return fetch(`${PLANTIT_API_URL}/login`,{
@@ -11,9 +11,45 @@ const login = (credentials) => {
     }).then(response => response.json())
 }
 
+const profile = () => {
+    return fetch(`${PLANTIT_API_URL}/profile`,{
+        method: "POST",
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        },
+    })
+        .then(response => {
+            if (response.status === 403) {
+                return null
+            } else {
+                return response.json()
+            }
+        })
+}
+
 const logout = () => {
-    return fetch(`${PLANTIT_API_URL}/logout`)
-        .then(response => response.json())
+    return fetch(`${PLANTIT_API_URL}/logout`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            'content-type': 'application/json'
+        },
+    }).then(response => response.text())
+}
+
+const register = (newUser) => {
+    return fetch(`${PLANTIT_API_URL}/register`, {
+        method: "POST",
+        credentials: "include",
+        body: JSON.stringify(newUser),
+        headers: {
+            'content-type': "application/json"
+        }
+    }).then(response => response.json())
+        .catch(error => {
+            alert("Username already exists!")
+        })
 }
 
 const profile = () => {
@@ -32,7 +68,8 @@ const api = {
     login,
     logout,
     profile,
-    findUserById
+    findUserById,
+    register
 }
 
 export default api

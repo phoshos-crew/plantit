@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import cropService from '../services/crops-service'
 import {useParams, useHistory} from "react-router-dom";
-import ResultGrid from "./grid/grid";
+import PlantGrid from "./grid/grid";
 
 const Search = () => {
-
     const {cropName} = useParams()
     const [searchTitle, setSearchTitle] = useState("")
     const [results, setResults] = useState([])
@@ -19,19 +18,21 @@ const Search = () => {
     }, [cropName])
     return(
         <div>
-            <h2>Find some plants!</h2>
-            <input
+            <input className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
                 onChange={(event) => {
                     setSearchTitle(event.target.value)
                 }}
-                className="form-control"
-                value={searchTitle}/>
-            <button
-                onClick={() => {history.push(`/search/${searchTitle}`)}}
-                className="btn btn-primary btn-block">
+                // value={searchTitle}
+            />
+            <button className="btn btn-primary my-2 my-sm-0"
+                    type="submit"
+                    onClick={() => {history.push(`/search/${searchTitle}`)}}>
                 Search
             </button>
-            <ResultGrid results={results}/>
+            <PlantGrid crops={results}/>
         </div>
     )
 }

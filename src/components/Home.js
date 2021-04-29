@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import LoginPage from "./login/login-page";
 import AnonymousContent from "./anonymous-content";
 import Search from "./search";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 
 const Home = () => {
 
@@ -15,16 +15,6 @@ const Home = () => {
                 <Col>
                     <h1>Home</h1>
                 </Col>
-                <Link to={`/login`}>
-                    <Button size={"lg"} variant={"outline-primary"} className={"mr-2"}>
-                        Login
-                    </Button>
-                </Link>
-                <Link to={`/register`}>
-                    <Button size={"lg"} variant={"outline-dark"}>
-                        Sign Up
-                    </Button>
-                </Link>
                 <Link to={`/feed`}>
                     Feed
                 </Link>
