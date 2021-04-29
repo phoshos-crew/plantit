@@ -13,13 +13,12 @@ const EditableRowItem = (
     } = this.props ) => {
 
     const [editing, setEditing] = useState(false)
-    // const [cachedItem, setCachedItem] = useState(item)
 
     return (
         <tr>
             <td className="d-none d-md-table-cell">{id}</td>
             <td className="d-none d-md-table-cell">{poster}</td>
-            <td className="d-none d-md-table-cell">Post</td>
+            <td className="d-none d-lg-table-cell">Post</td>
             <td className="text-right">
                 { !editing &&
                 <Link to={`/admin/${type}/${id}`}>

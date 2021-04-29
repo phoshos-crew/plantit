@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import cropService from '../services/crops-service'
 import PlantGrid from "./grid/grid";
 
@@ -10,12 +10,15 @@ const AnonymousContent = () => {
     const [crops, setCrops] = useState([])
     const [randomCrop, setRandomCrop] = useState("")
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         setRandomCrop(listOfCrops[random])
+    }, [])
 
+    useEffect(() => {
         cropService.findCropByName(randomCrop)
             .then(results => setCrops(results.data))
     }, [randomCrop])
+
     return(
         <>
             <h1>Anon Content</h1>
