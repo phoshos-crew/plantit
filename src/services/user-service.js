@@ -46,10 +46,12 @@ const register = (newUser) => {
         headers: {
             'content-type': "application/json"
         }
-    }).then(response => response.json())
-        .catch(error => {
-            alert("Username already exists!")
-        })
+    })
+        // .then(promise => console.log(promise))
+        .then(response => response.json())
+        // .catch(error => {
+        //     alert("Username already exists!")
+        // })
 }
 
 const api = {
