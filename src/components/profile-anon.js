@@ -28,14 +28,14 @@ const ProfileAnon = (
                     </Link>
                     <div class="row">
 
-                        <div class="col-2 d-none d-md-table-cell">
-                            <h4>{profileUser.firstName}'s Profile</h4>
+                        <div class="col-4 d-none d-md-table-cell">
+                            <h4>{profileUser.firstName} {profileUser.lastName}'s Profile</h4>
                         </div>
                     </div>
                     <br/>
 
                     <div className="col-4">
-                        <h4>Groups {profileUser.firstName} Follows</h4>
+                        <h4>Groups {profileUser.firstName} {profileUser.lastName} Follows</h4>
                     </div>
                     <div className="row">
                         <Card style={{width: '18rem'}}>
