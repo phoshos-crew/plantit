@@ -10,7 +10,8 @@ const Profile = (
         currentUser,
         getCurrentUser,
         profileUser,
-        getUserById
+        getUserById,
+
     }) => {
 
 
@@ -18,6 +19,7 @@ const Profile = (
 
     useEffect(() => {
         getCurrentUser()
+
     }, [])
 
     return (
@@ -81,7 +83,32 @@ const Profile = (
                     <br/>
 
                     <div className="col-4">
-                        <h4>Groups {currentUser.firstName} Follows</h4>
+                        <h4>Users {currentUser.firstName} {currentUser.lastName} Follows</h4>
+                    </div>
+                    {
+                        currentUser &&
+                        <div className="row">
+                            {
+                                currentUser.usersFollowed.map(user =>
+
+                                    <>
+                                        <Card style={{width: '18rem'}}>
+                                            <Card.Body>
+                                                <Card.Title>{user}</Card.Title>
+                                                <Link to={`/profile/${user}`}>
+                                                    <Button variant="primary">Go</Button>
+                                                </Link>
+                                            </Card.Body>
+                                        </Card>
+                                        <br/>
+                                    </>
+                                )
+                            }
+                        </div>
+                    }
+                    <br/>
+                    <div className="col-4">
+                        <h4>Groups {currentUser.firstName} {currentUser.lastName} Follows</h4>
                     </div>
                     <div className="row">
                         <Card style={{width: '18rem'}}>
@@ -104,24 +131,6 @@ const Profile = (
                                 <Button variant="primary">Go</Button>
                             </Card.Body>
                         </Card>
-                    </div>
-
-                    <div className="col-4">
-                        <h4>Users {currentUser.firstName} Follows</h4>
-
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[0]}`}>
-                            {currentUser.usersFollowed[0]}</Link></h6>
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[1]}`}>
-                            {currentUser.usersFollowed[1]}</Link></h6>
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[2]}`}>
-                            {currentUser.usersFollowed[2]}</Link></h6>
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[3]}`}>
-                            {currentUser.usersFollowed[3]}</Link></h6>
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[4]}`}>
-                            {currentUser.usersFollowed[4]}</Link></h6>
-                            <h6><Link to = {`/profile/${currentUser.usersFollowed[5]}`}>
-                            {currentUser.usersFollowed[5]}</Link></h6>
-
                     </div>
                 </>
             }
