@@ -1,4 +1,4 @@
-export const PLANTIT_API_URL = 'http://localhost:4000/api';
+const PLANTIT_API_URL = process.env.REACT_APP_NODE_URL
 
 const login = (credentials) => {
     return fetch(`${PLANTIT_API_URL}/login`,{

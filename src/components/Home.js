@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Link} from "react-router-dom";
 import AnonymousContent from "./anonymous-content";
-import Search from "./search";
 import {Col, Container, Row} from "react-bootstrap";
 
 const Home = () => {

@@ -1,0 +1,42 @@
+.inner {
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+
+/*// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    .img {
+        width: 100%;
+        height: 30vw;
+        object-fit: cover;
+    }
+}
+
+/* https://stackoverflow.com/questions/37287153/how-to-get-images-in-bootstraps-card-to-be-the-same-height-width/53252725 */
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    .img {
+        width: 100%;
+        height: 35vw;
+        object-fit: cover;
+    }
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    .img {
+        width: 100%;
+        height: 25vw;
+        object-fit: cover;
+    }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .img {
+        width: 100%;
+        height: 30vw;
+        object-fit: cover;
+    }
+}
