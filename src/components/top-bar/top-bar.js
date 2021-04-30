@@ -9,7 +9,7 @@ import userService from "../../services/user-service"
 const TopBar = ({logout, user}) => {
     const history = useHistory()
     const [curUser, setCurUser] = useState(user)
-    console.log("outside", user)
+    // console.log("outside", user)
 
     useLayoutEffect(() => {
         userService.profile()

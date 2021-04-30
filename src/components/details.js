@@ -38,15 +38,16 @@ const Details = (
                         {crop.attributes.description}
                     </p>
                     <ul>
-                        <li>Sun Requirements: {crop.attributes.sun_requirements}</li>
-                        <li>Sowing Method: {crop.attributes.sowing_method}</li>
-                        <li>Spread: {crop.attributes.spread}</li>
-                        <li>Row Spacing: {crop.attributes.row_spacing}</li>
+                        <li key="1">Sun Requirements: {crop.attributes.sun_requirements}</li>
+                        <li key="2">Sowing Method: {crop.attributes.sowing_method}</li>
+                        <li key="3">Spread: {crop.attributes.spread}</li>
+                        <li key="4">Row Spacing: {crop.attributes.row_spacing}</li>
                     </ul>
                     {
                         currentUser
-                        && !Object.values(currentUser.plantsOwned).flat().includes(cropId)
-                        && <Button
+                        && currentUser.plantsOwned.some(e => e.plantId == cropId)
+                        &&
+                        <Button
                             onClick={() => {
                                 addPlant(currentUser._id,
                                     {plantId: cropId})

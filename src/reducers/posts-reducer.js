@@ -4,8 +4,8 @@ const initialState = {
     posts_by_user: {}
 }
 
-const userReducer = (state = initialState, action) => {
-    console.log(JSON.stringify(action))
+const postReducer = (state = initialState, action) => {
+    // console.log(JSON.stringify(action))
     switch (action.type) {
         case FIND_POSTS_FOR_USER:
             return {
@@ -31,4 +31,4 @@ const userReducer = (state = initialState, action) => {
     }
 }
 
-export default userReducer
+export default postReducer
