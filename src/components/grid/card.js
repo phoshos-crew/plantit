@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Col, Card, CardDeck, Button} from "react-bootstrap";
-import "./card.css"
+import "../styles.css"
 
 
 const PlantCard = ({ name, details, img, desc, maxHeight }) => {
