@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Col, Card, CardDeck, Button} from "react-bootstrap";
-import "./card.css"
+import "../styles.css"
 
 
 const PlantCard = ({ name, details, img, desc, maxHeight }) => {
@@ -22,7 +22,7 @@ const PlantCard = ({ name, details, img, desc, maxHeight }) => {
                                 {desc}
                             </div>
                             <Link to={details}>
-                                <Button variant={"outline-success"}>
+                                <Button variant={"outline-success"} className={"mt-2"}>
                                     Read More...
                                 </Button>
                             </Link>

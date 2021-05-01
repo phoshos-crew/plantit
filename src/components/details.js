@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useLayoutEffect} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import cropsService from '../services/crops-service'
 import userActions from "../actions/user-actions";
-import {Button} from "react-bootstrap";
+import {Button, Container, Image} from "react-bootstrap";
 import {connect} from "react-redux";
 import Card from "react-bootstrap/Card";
+import './styles.css'
 
 const Details = (
     {
@@ -16,10 +17,9 @@ const Details = (
     }) => {
 
     const [crop, setCrop] = useState({})
-    // const [cropUsers, setCropUsers] = useState([])
     const {cropId} = useParams()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         cropsService.findCropById(cropId)
             .then(crop => setCrop(crop.data))
         getCurrentUser()
@@ -27,12 +27,12 @@ const Details = (
     }, [cropId])
 
     return (
-        <div>
+        <Container>
             {
                 crop.attributes &&
                 <>
                     <h1>{crop.attributes.name}</h1>
-                    <img src={crop.attributes.main_image_path}/>
+                    <Image src={crop.attributes.main_image_path} className={'img'}/>
                     <h2>Description</h2>
                     <p>
                         {crop.attributes.description}
@@ -47,12 +47,7 @@ const Details = (
                         currentUser
                         && currentUser.plantsOwned.some(e => e.plantId == cropId)
                         &&
-                        <Button
-                            onClick={() => {
-                                addPlant(currentUser._id,
-                                    {plantId: cropId})
-                            }}
-                        >
+                        <Button onClick={() => { addPlant(currentUser._id, {plantId: cropId})}}>
                             Add Plant
                         </Button>
                     }
@@ -85,7 +80,7 @@ const Details = (
                     }
                 </>
             }
-        </div>
+        </Container>
     )
 }
 

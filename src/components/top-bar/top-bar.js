@@ -9,17 +9,14 @@ import userService from "../../services/user-service"
 const TopBar = ({logout, user}) => {
     const history = useHistory()
     const [curUser, setCurUser] = useState(user)
-    // console.log("outside", user)
 
     useLayoutEffect(() => {
         userService.profile()
-            // .then(response => console.log("response", response))
-            // .catch(error => setCurUser({}))
             .then(retUser => setCurUser(retUser))
     }, [user])
 
     return(
-        <div>
+        <>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Navbar.Brand href={curUser ? "/feed" : "/"}>PlantIt</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -52,7 +49,7 @@ const TopBar = ({logout, user}) => {
                         {
                             curUser && curUser.role === 'SITE_ADMIN' &&
                             <Link href={`/admin`}>
-                                <Button variant={"danger"} className={"mr-4"}>
+                                <Button variant={"danger"} className={"mr-4 mt-2"}>
                                     Admin
                                 </Button>
                             </Link>
@@ -61,7 +58,7 @@ const TopBar = ({logout, user}) => {
                             curUser &&
                             <>
                                 <Nav.Link href={`/profile`}>
-                                    <Button variant={"outline-success"} className={"mr-2"}>
+                                    <Button variant={"outline-success"}>
                                         Profile
                                     </Button>
                                 </Nav.Link>
@@ -81,27 +78,7 @@ const TopBar = ({logout, user}) => {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            {/*{console.log("inside", curUser)}*/}
-            {/*<nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">*/}
-            {/*    <a className="navbar-brand" href={curUser ? "/feed" : "/"}>PlantIt</a>*/}
-            {/*    <button className="navbar-toggler" type="button" data-toggle="collapse"*/}
-            {/*            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"*/}
-            {/*            aria-expanded="false" aria-label="Toggle navigation">*/}
-            {/*        <span className="navbar-toggler-icon"></span>*/}
-            {/*    </button>*/}
-            {/*    <div className="collapse navbar-collapse" id="navbarSupportedContent">*/}
-            {/*        {*/}
-            {/*            curUser &&*/}
-            {/*            <span className={"mx-3 nav-item"}>{`Hello ${curUser.firstName}!`}</span>*/}
-            {/*        }*/}
-            {/*        <form className="form-inline mx-auto">*/}
-            {/*            <Search/>*/}
-            {/*        </form>*/}
-
-
-            {/*    </div>*/}
-            {/*</nav>*/}
-        </div>
+        </>
     )
 }
 
@@ -111,7 +88,6 @@ const stpm = (state) => ({
 
 const dtpm = (dispatch) => {
     return {
-        // login: (credentials) => userActions.login(dispatch, credentials),
         logout: () => userActions.logout(dispatch)
     }
 }

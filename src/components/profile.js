@@ -4,6 +4,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import userActions from '../actions/user-actions'
 import {connect} from "react-redux";
+import {Col, Container, Row} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Profile = (
     {
@@ -19,84 +21,89 @@ const Profile = (
 
     useEffect(() => {
         getCurrentUser()
-
     }, [])
 
     return (
-        <div class="container-fluid">
+        <Container>
             {
-                currentUser
-                && <>
-                    <Link to="/">
-                        <i className="fas fa-2x fa-home float-right"/>
-                    </Link>
-                    <div class="row">
-                        <div class="col-2 d-none d-md-table-cell">
-                            <h4>Profile</h4>
-                        </div>
-                    </div>
+                currentUser &&
+                <>
+                    <Row>
+                        <Col lg={8} md={7} sm={8} xs={6} className={"mt-3"}>
+                            <h2>Profile</h2>
+                        </Col>
+                        <Col lg={4} md={5} sm={4} xs={6}>
+                            <Link to="/">
+                                <FontAwesomeIcon icon={"home"} size={"2x"} pull={"right"} className={"mt-3"}
+                                                 color={"orangered"}/>
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4} className={"mt-4 "}>
+                            <h4>Personal Information</h4>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={8} className={"mt-2"}>
+                            <Card className={"mb-3"} border={"dark"}>
+                                <Card.Body>
+                                    <Row>
+                                        <Col sm={3}>
+                                            <h6 className="mb-0">First Name</h6>
+                                        </Col>
+                                        <Col sm={9} className={"text-secondary"}>
+                                            {currentUser.firstName}
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row>
+                                        <Col sm={3}>
+                                            <h6 className="mb-0">Last Name</h6>
+                                        </Col>
+                                        <Col sm={9} className={"text-secondary"}>
+                                            {currentUser.lastName}
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row>
+                                        <Col sm={3}>
+                                            <h6 className="mb-0">Email</h6>
+                                        </Col>
+                                        <Col sm={9} className={"text-secondary"}>
+                                            {currentUser.email}
+                                        </Col>
+                                    </Row>
+                                    <hr/>
+                                    <Row>
+                                        <Col sm={3}>
+                                            <h6 className="mb-0">Phone</h6>
+                                        </Col>
+                                        <Col sm={3} className={"text-secondary"}>
+                                            {currentUser.phone}
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
                     <br/>
-                    <div class="col-4">
-                        <h4>Personal Information</h4>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">First Name</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {currentUser.firstName}
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Last Name</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {currentUser.lastName}
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Email</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {currentUser.email}
-                                    </div>
-                                </div>
-                                <hr/>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Phone</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        {currentUser.phone}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div className="col-4">
-                        <h4>Users {currentUser.firstName} {currentUser.lastName} Follows</h4>
-                    </div>
+                    <Row>
+                        <Col sm={12} className={"ml-1"}>
+                            <h4>Users {currentUser.firstName} {currentUser.lastName} Follows</h4>
+                        </Col>
+                    </Row>
                     {
                         currentUser &&
-                        <div className="row">
+                        <Row className={"mt-2 ml-1"}>
                             {
                                 currentUser.usersFollowed.map(user =>
-
                                     <>
-                                        <Card style={{width: '18rem'}}>
+                                        <Card style={{width: '18rem'}} bg={"light"} text={"dark"}>
                                             <Card.Body>
-                                                <Card.Title>{user}</Card.Title>
+                                                <Card.Title className={"text-muted"}>{user}</Card.Title>
                                                 <Link to={`/profile/${user}`}>
-                                                    <Button variant="primary">Go</Button>
+                                                    <Button variant="secondary">Go</Button>
                                                 </Link>
                                             </Card.Body>
                                         </Card>
@@ -104,38 +111,39 @@ const Profile = (
                                     </>
                                 )
                             }
-                        </div>
+                        </Row>
                     }
                     <br/>
-                    <div className="col-4">
-                        <h4>Groups {currentUser.firstName} {currentUser.lastName} Follows</h4>
-                    </div>
-                    <div className="row">
-                        <Card style={{width: '18rem'}}>
+                    <Row>
+                        <Col sm={12} className={"mt-4 ml-1"}>
+                            <h4>Groups {currentUser.firstName} {currentUser.lastName} Follows</h4>
+                        </Col>
+                    </Row>
+                    <Row className={"mt-2 ml-1"}>
+                        <Card style={{width: '18rem'}} bg={"light"} text={"dark"}>
                             <Card.Body>
-                                <Card.Title>ThePlantSociety</Card.Title>
-                                <Button variant="primary">Go</Button>
+                                <Card.Title className={"text-muted"}>ThePlantSociety</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
                         <br/>
-                        <Card style={{width: '18rem'}}>
+                        <Card style={{width: '18rem'}} bg={"light"} text={"dark"}>
                             <Card.Body>
-                                <Card.Title>FinestFlora</Card.Title>
-                                <Button variant="primary">Go</Button>
+                                <Card.Title className={"text-muted"}>FinestFlora</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
                         <br/>
-                        <Card style={{width: '18rem'}}>
+                        <Card style={{width: '18rem'}} bg={"light"} text={"dark"}>
                             <Card.Body>
-                                <Card.Title>PlantPerfect</Card.Title>
-                                <Button variant="primary">Go</Button>
+                                <Card.Title className={"text-muted"}>PlantPerfect</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
-                    </div>
+                    </Row>
                 </>
             }
-        </div>
-
+        </Container>
     )
 }
 
