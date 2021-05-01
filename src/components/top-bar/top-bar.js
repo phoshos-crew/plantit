@@ -49,7 +49,7 @@ const TopBar = ({logout, user}) => {
                         {
                             curUser && curUser.role === 'SITE_ADMIN' &&
                             <Link href={`/admin`}>
-                                <Button variant={"danger"} className={"mr-4"}>
+                                <Button variant={"danger"} className={"mr-4 mt-2"}>
                                     Admin
                                 </Button>
                             </Link>
@@ -58,7 +58,7 @@ const TopBar = ({logout, user}) => {
                             curUser &&
                             <>
                                 <Nav.Link href={`/profile`}>
-                                    <Button variant={"outline-success"} className={"mr-2"}>
+                                    <Button variant={"outline-success"}>
                                         Profile
                                     </Button>
                                 </Nav.Link>

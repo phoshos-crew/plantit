@@ -22,7 +22,7 @@ const PlantCard = ({ name, details, img, desc, maxHeight }) => {
                                 {desc}
                             </div>
                             <Link to={details}>
-                                <Button variant={"outline-success"}>
+                                <Button variant={"outline-success"} className={"mt-2"}>
                                     Read More...
                                 </Button>
                             </Link>
