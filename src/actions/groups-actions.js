@@ -1,4 +1,4 @@
-import groupService from '../services/group-service'
+import groupService from '../services/groups-service'
 
 export const FIND_GROUP_BY_ID = "FIND_GROUP_BY_ID"
 
@@ -11,7 +11,7 @@ export const findGroupById = (dispatch, groupId) =>
     }))
 
 
-const userActions = {
+const groupActions = {
     findGroupById,
 }
 

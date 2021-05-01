@@ -23,6 +23,7 @@ import commentsReducer from "./reducers/comments-reducer";
 import TopBar from "./components/top-bar/top-bar";
 import AdminPage from "./components/admin/admin"
 import GroupPage from "./components/group/group-page";
+import groupReducer from "./reducers/groups-reducer";
 
 
 
@@ -32,7 +33,8 @@ const reducer = combineReducers({
     userReducer: userReducer,
     postsReducer: postsReducer,
     commentsReducer: commentsReducer,
-    cropReducer: cropReducer
+    cropReducer: cropReducer,
+    groupReducer: groupReducer
 })
 
 const store = createStore(reducer,
