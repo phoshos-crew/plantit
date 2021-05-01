@@ -1,0 +1,1 @@
+export const PLANTIT_API_URL = 'https://plantit-node-staging.herokuapp.com/api';
