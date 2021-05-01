@@ -1,4 +1,4 @@
-const PLANTIT_API_URL = process.env.REACT_APP_NODE_URL
+import {PLANTIT_API_URL} from "./node-service";
 
 const findPostsForUser = (userId) => {
     return fetch(`${PLANTIT_API_URL}/users/${userId}/posts`)

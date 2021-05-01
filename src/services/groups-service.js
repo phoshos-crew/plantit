@@ -1,5 +1,4 @@
-export const PLANTIT_API_URL = 'http://localhost:4000/api';
-
+import {PLANTIT_API_URL} from "./node-service";
 
 const findGroupById = (groupId) => {
     return fetch(`${PLANTIT_API_URL}/groups/${groupId}`)

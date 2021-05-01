@@ -1,4 +1,4 @@
-const PLANTIT_API_URL = process.env.REACT_APP_NODE_URL
+import {PLANTIT_API_URL} from "./node-service";
 
 const createComment = (postId, comment) => {
     console.log(comment)
