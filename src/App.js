@@ -22,6 +22,7 @@ import ProfileAnon from "./components/profile-anon";
 import commentsReducer from "./reducers/comments-reducer";
 import TopBar from "./components/top-bar/top-bar";
 import AdminPage from "./components/admin/admin"
+import GroupPage from "./components/group/group-page";
 
 
 
@@ -91,6 +92,11 @@ function App() {
                             "/admin/:contentType/:contentId"
                         ]}>
                         <AdminPage/>
+                    </Route>
+                    <Route
+                        exact={true}
+                        path={["/group", "/group/:groupId"]}>
+                        <GroupPage/>
                     </Route>
                 </BrowserRouter>
             </div>
