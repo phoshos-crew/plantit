@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react'
-import {useParams} from "react-router-dom";
-import {Link, Route} from "react-router-dom";
+import React, {useEffect} from 'react'
+import {Link, useParams} from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import userActions from '../actions/user-actions'
 import {connect} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Col, Container, Row} from "react-bootstrap";
 
 const ProfileAnon = (
     {
@@ -19,61 +20,61 @@ const ProfileAnon = (
     }, [userId])
 
     return (
-        <div class="container-fluid">
+        <Container>
             {
-                profileUser
-                && <>
-                    <Link to="/">
-                        <i className="fas fa-2x fa-home float-right"/>
-                    </Link>
-                    <div class="row">
-
-                        <div class="col-4 d-none d-md-table-cell">
-                            <h4>{profileUser.firstName} {profileUser.lastName}'s Profile</h4>
-                        </div>
-                    </div>
-                    <br/>
-
-                    <div className="col-4">
-                        <h4>Groups {profileUser.firstName} {profileUser.lastName} Follows</h4>
-                    </div>
-                    <div className="row">
+                profileUser &&
+                <>
+                    <Row>
+                        <Col lg={7} md={7} sm={8} xs={6} className={"mt-3"}>
+                            <h2>{profileUser.firstName} {profileUser.lastName}'s Profile</h2>
+                        </Col>
+                        <Col lg={5} md={5} sm={4} xs={6}>
+                            <Link to="/">
+                                <FontAwesomeIcon icon={"home"} size={"2x"} pull={"right"} className={"mt-3"}
+                                                 color={"orangered"}/>
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4} lg={12} className={"mt-4 ml-1"}>
+                            <h4>Groups {profileUser.firstName} {profileUser.lastName} Follows</h4>
+                        </Col>
+                    </Row>
+                    <Row className={"mt-2 ml-1"}>
                         <Card style={{width: '18rem'}}>
-                            <Card.Body>
-                                <Card.Title>ThePlantSociety</Card.Title>
-                                <Button variant="primary">Go</Button>
+                            <Card.Body bg={"light"} text={"dark"}>
+                                <Card.Title className={"text-muted"}>ThePlantSociety</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
                         <br/>
                         <Card style={{width: '18rem'}}>
-                            <Card.Body>
-                                <Card.Title>FinestFlora</Card.Title>
-                                <Button variant="primary">Go</Button>
+                            <Card.Body bg={"light"} text={"dark"}>
+                                <Card.Title className={"text-muted"}>FinestFlora</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
                         <br/>
                         <Card style={{width: '18rem'}}>
-                            <Card.Body>
-                                <Card.Title>PlantPerfect</Card.Title>
-                                <Button variant="primary">Go</Button>
+                            <Card.Body bg={"light"} text={"dark"}>
+                                <Card.Title className={"text-muted"}>PlantPerfect</Card.Title>
+                                <Button variant="secondary">Go</Button>
                             </Card.Body>
                         </Card>
-                    </div>
+                    </Row>
                 </>
             }
-        </div>
-
+        </Container>
     )
 }
 
 const stpm = (state) => (
-{
-    profileUser: state.userReducer.profileUser,
-}
+    {
+        profileUser: state.userReducer.profileUser,
+    }
 )
 
-const dtpm = (dispatch) =>
-{
+const dtpm = (dispatch) => {
     return {
         getUserById: (userId) => userActions.findUserById(dispatch, userId)
     }
